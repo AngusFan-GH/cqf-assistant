@@ -3,6 +3,7 @@
 
 # 打包文件
 /dist
+/build
 
 # 生产环境配置文件
 /.env.production
