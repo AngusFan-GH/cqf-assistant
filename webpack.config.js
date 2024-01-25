@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve } = require('path');
 const { name, version } = require('./package.json');
 const UpdateManifestVersionPlugin = require('./update-manifest-version-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -65,6 +66,18 @@ module.exports = {
                 { from: 'src/icons', to: 'icons' },
                 { from: 'src/manifest.json', to: 'manifest.json' },
             ],
-        })
+        }),
+        new FileManagerPlugin({
+            events: {
+                onEnd: {
+                    archive: [
+                        {
+                            source: './build/' + name + '-v' + version,
+                            destination: './build/' + name + '-v' + version + '.zip'
+                        },
+                    ]
+                }
+            }
+        }),
     ]
 };
