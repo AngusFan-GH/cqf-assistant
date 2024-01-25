@@ -3,6 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve } = require('path');
 const { name, version } = require('./package.json');
+const UpdateManifestVersionPlugin = require('./update-manifest-version-plugin');
 
 module.exports = {
     mode: 'development',
@@ -57,6 +58,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new UpdateManifestVersionPlugin(),
         new VueLoaderPlugin(),
         new CopyPlugin({
             patterns: [
