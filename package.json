@@ -10,12 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "rxjs": "^7.8.1",
     "vue": "^3.4.13"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.256",
+    "@extend-chrome/storage": "^1.5.0",
     "@vue/compiler-sfc": "^3.4.13",
     "@vue/runtime-dom": "^3.4.13",
+    "chrome-types": "^0.1.253",
     "copy-webpack-plugin": "^12.0.1",
     "css-loader": "^6.9.0",
     "filemanager-webpack-plugin": "^8.0.0",

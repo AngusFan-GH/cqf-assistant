@@ -9,12 +9,12 @@ const FileManagerPlugin = require('filemanager-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        inject: './src/inject.ts',
-        background: './src/background.ts'
+        content: './src/content/content.ts',
+        background: './src/background/background.ts'
     },
     output: {
         path: resolve(__dirname, 'build/' + name + '-v' + version),
-        filename: '[name].js'
+        filename: '[name]/[name].js'
     },
     resolve: {
         extensions: ['.ts', '.js', '.vue', '.json'],

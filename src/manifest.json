@@ -8,6 +8,8 @@
         "128": "icons/icon128.png"
     },
     "permissions": [
+        "tabs",
+        "windows",
         "activeTab",
         "scripting"
     ],
@@ -19,7 +21,7 @@
         }
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background/background.js"
     },
     "content_scripts": [
         {
@@ -27,7 +29,7 @@
                 "https://learn.cqf.com/**"
             ],
             "js": [
-                "inject.js"
+                "content/content.js"
             ]
         }
     ]
