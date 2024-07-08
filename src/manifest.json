@@ -11,7 +11,8 @@
         "tabs",
         "windows",
         "activeTab",
-        "scripting"
+        "scripting",
+        "storage"
     ],
     "action": {
         "default_icon": {
@@ -30,7 +31,21 @@
             ],
             "js": [
                 "content/content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "content/record-video.js"
+            ],
+            "matches": [
+                "https://learn.cqf.com/*"
             ]
         }
-    ]
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
 }
