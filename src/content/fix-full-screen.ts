@@ -1,8 +1,8 @@
+import log from "../common/utils/pretty-log";
 class VideoCancelFullScreenFix {
     private video: HTMLVideoElement | null;
 
     constructor() {
-        console.log('VideoCancelFullScreenFix initialized');
         this.video = null;
         this.listenVideoLoaded();
     }
@@ -13,7 +13,7 @@ class VideoCancelFullScreenFix {
                 if (mutation.addedNodes.length) {
                     mutation.addedNodes.forEach((node: Node) => {
                         if (node.nodeType === Node.ELEMENT_NODE && (node as Element).matches('.video-js')) {
-                            console.log('Video element found');
+                            log.info('Video element found');
                             this.video = node as HTMLVideoElement;
                             this.listenVideoFullScreen();
                         }
@@ -27,7 +27,7 @@ class VideoCancelFullScreenFix {
 
     private listenVideoFullScreen(): void {
         if (!this.video) {
-            console.error('Video element not found');
+            log.error('Video element not found');
             return;
         }
         this.video.addEventListener('fullscreenchange', this.handleFullScreenChange.bind(this));

@@ -1,6 +1,8 @@
+import { ENV } from "../modal";
+
 // 美化打印实现方法
 const prettyLog = () => {
-    const isProduction = import.meta.env.MODE === 'production';
+    const isProduction = ENV === 'production';
 
     const isEmpty = (value: any) => {
         return value == null || value === undefined || value === '';
@@ -97,3 +99,5 @@ const prettyLog = () => {
 };
 // 创建打印对象
 const log = prettyLog();
+
+export default log;

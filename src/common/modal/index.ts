@@ -1,6 +1,7 @@
-const URL = 'https://learn.cqf.com';
+const URL: string = 'https://learn.cqf.com';
+const ENV: 'development' | 'production' = 'development';
 
 export {
-    URL
+    ENV, URL
 };
 
