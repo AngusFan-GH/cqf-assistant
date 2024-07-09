@@ -10,15 +10,12 @@ module.exports = {
     mode: 'development',
     entry: {
         content: './src/content/content.ts',
-        background: './src/background/background.ts',
-        ['record-video']: './src/content/record-video.ts',
+        background: './src/background/background.ts'
     },
     output: {
         path: resolve(__dirname, 'build/' + name + '-v' + version),
         filename: (chunkData) => {
             switch (chunkData.chunk.name) {
-                case 'record-video':
-                    return 'content/[name].js';
                 default:
                     return '[name]/[name].js';
             }
