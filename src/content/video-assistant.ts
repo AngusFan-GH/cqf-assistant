@@ -5,6 +5,7 @@ class VideoAssistant {
     private playListId: string | null;
     private video: HTMLVideoElement | null;
     private videoId: string | null;
+    private lastSavedTime: number = Date.now();
 
     constructor() {
         log.info('Video assistant initialized.');
@@ -112,13 +113,18 @@ class VideoAssistant {
     }
 
     private saveVideoProgress(videoId: string, currentTime: number): void {
-        chrome.runtime.sendMessage({ type: 'saveProgress', videoId, currentTime }, {}, (response) => {
-            if (response.status === 'success') {
-                log.info(`Video progress saved: ${currentTime}`);
-            } else {
-                log.error('Failed to save progress');
-            }
-        });
+        // 增加节流操作，每 5 秒保存一次
+        const saveInterval = 5000;
+        if (Date.now() - this.lastSavedTime >= saveInterval) {
+            chrome.runtime.sendMessage({ type: 'saveProgress', videoId, currentTime }, {}, (response) => {
+                if (response.status === 'success') {
+                    log.info(`Video progress saved: ${currentTime}`);
+                    this.lastSavedTime = Date.now();
+                } else {
+                    log.error('Failed to save progress');
+                }
+            });
+        }
     }
 }
 
